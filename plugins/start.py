@@ -111,8 +111,8 @@ async def not_joined(client: Client, message: Message):
     retry_url = f"https://t.me/{client.username}?start={message.command[1]}"
 
     user_id = message.from_user.id
-    is_member_channel_1 = await client.get_chat_member(client.invitelink, user_id)
-    is_member_channel_2 = await client.get_chat_member(client.invitelink2, user_id)
+    is_member_channel_1 = await client.get_chat_member(-1002215102799, user_id)
+    is_member_channel_2 = await client.get_chat_member(-1002485124074, user_id)
 
     if is_member_channel_1.status not in ["member", "administrator", "creator"] and is_member_channel_2.status not in ["member", "administrator", "creator"]:
         buttons = [
