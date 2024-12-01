@@ -136,15 +136,6 @@ async def not_joined(client: Client, message: Message):
             InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink2)
         ])
 
-    # If both channels need subscription, create a combined button set
-    else:
-        buttons.append([
-            [
-                InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
-                InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2)
-            ]
-        ])
-
     # Try to add a retry button if applicable
     try:
         buttons.append([
