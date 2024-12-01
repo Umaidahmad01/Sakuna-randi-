@@ -137,7 +137,7 @@ async def not_joined(client: Client, message: Message):
         ])
 
     # If both channels need subscription, create a combined button set
-    if not sub1 and not sub2:
+    else:
         buttons.append([
             [
                 InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
