@@ -109,23 +109,21 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    buttons = [
-        [
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
-        ]
-    ]
-    try:
-        buttons.append(
-            [
-                InlineKeyboardButton(
-                    text='• ᴛʀʏ ᴀɢᴀɪɴ •',
-                    url=f"https://t.me/{client.username}?start={message.command[1]}"
-                )
-            ]
-        )
-    except IndexError:
-        pass
+    [
+    [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 1", url=client.invitelink)],
+    [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 2", url=client.invitelink2)],
+    [InlineKeyboardButton(text="• ᴛʀʏ ᴀɢᴀɪɴ •", url="retry_url")]
+]
+
+[
+    [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 2", url=client.invitelink2)],
+    [InlineKeyboardButton(text="• ᴛʀʏ ᴀɢᴀɪɴ •", url="retry_url")]
+]
+
+[
+    [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 1", url=client.invitelink)],
+    [InlineKeyboardButton(text="• ᴛʀʏ ᴀɢᴀɪɴ •", url="retry_url")]
+]
 
     await message.reply_photo(
     photo=FORCE_PIC, 
