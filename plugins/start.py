@@ -108,19 +108,21 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
+              retry_url=f"https://t.me/{client.username}?start={message.command[1]}"
 
-
-    [
+buttons : []
+   if :
+ [
     [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 1", url=client.invitelink)],
     [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 2", url=client.invitelink2)],
     [InlineKeyboardButton(text="• ᴛʀʏ ᴀɢᴀɪɴ •", url="retry_url")]
 ]
-
+elif : 
 [
     [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 2", url=client.invitelink2)],
     [InlineKeyboardButton(text="• ᴛʀʏ ᴀɢᴀɪɴ •", url="retry_url")]
 ]
-
+else :
 [
     [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 1", url=client.invitelink)],
     [InlineKeyboardButton(text="• ᴛʀʏ ᴀɢᴀɪɴ •", url="retry_url")]
