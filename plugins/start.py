@@ -123,15 +123,16 @@ async def not_joined(client: Client, message: Message):
     sub1 = await is_subscribed(None, client, message)
     sub2 = await is_subscribed2(None, client, message)
 
-    buttons = []
-    if not sub1 and FORCE_SUB_CHANNEL:
+    buttons = [
+    if not sub2 and FORCE_SUB_CHANNEL:
         buttons.append([
             InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink)
         ])
-    if not sub2 and FORCE_SUB_CHANNEL2:
+    if not sub1 and FORCE_SUB_CHANNEL2:
         buttons.append([
             InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink2)
         ])
+               ]
 
     if not sub1 and not sub2:
         buttons = [
