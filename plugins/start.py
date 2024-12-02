@@ -125,19 +125,14 @@ async def not_joined(client: Client, message: Message):
 
     buttons = []
     
-    if not in_channel1:
-        buttons.append([InlineKeyboardButton("Join Channel 👆", url=f"https://t.me/{FORCE_SUB_CHANNEL}")])
     if not in_channel2:
+        buttons.append([InlineKeyboardButton("Join Channel 👆", url=f"https://t.me/{FORCE_SUB_CHANNEL}")])
+    if not in_channel1:
         buttons.append([InlineKeyboardButton("Join Channel 👆", url=f"https://t.me/{FORCE_SUB_CHANNEL2}")])
     
     if buttons:
         buttons.append([InlineKeyboardButton(text='Try Again 🥺', url=f"https://t.me/{client.username}?start={message.command[1]}")])
         
-        await message.reply_text(
-            "Please join the required channels before using the bot.",
-            reply_markup=InlineKeyboardMarkup(buttons)
-        )
-
     await message.reply_photo(
         photo=FORCE_PIC,
         caption=FORCE_MSG.format(
@@ -201,3 +196,4 @@ Unsuccessful: <code>{unsuccessful}</code></b>"""
         msg = await message.reply(REPLY_ERROR)
         await asyncio.sleep(8)
         await msg.delete()
+
