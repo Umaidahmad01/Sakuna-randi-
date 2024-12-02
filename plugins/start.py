@@ -107,30 +107,38 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 # =====================================================================================##
 
 
-@Bot.on_message(filters.command('start') & filters.private)
+@@Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    retry_url = f"https://t.me/{client.username}?start={message.command[1]}"
-
-    user_id = message.from_user.id
-    is_member_channel_1 = await client.get_chat_member(-1002215102799, user_id)
-    is_member_channel_2 = await client.get_chat_member2(-1002485124074, user_id)
-
-    if is_member_channel_1.status not in ["member", "administrator", "creator"] and is_member_channel_2.status not in ["member", "administrator", "creator"]:
+    if FORCE_SUB_CHANNEL & FORCE_SUB_CHANNEL2:
         buttons = [
-            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 1", url=client.invitelink)],
-            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 2", url=client.invitelink2)],
-            [InlineKeyboardButton(text="• ᴛʀʏ ᴀɢᴀɪɴ •", url=retry_url)]
+        [
+            InlineKeyboardButton(
+                "Join Channel 👆",
+                url=client.invitelink),
+            InlineKeyboardButton(
+                "Join Channel 👆",
+                url=client.invitelink2),
         ]
-    elif is_member_channel_1.status in ["member", "administrator", "creator"]:
+    ]
+    elif FORCE_SUB_CHANNEL:
         buttons = [
-            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 2", url=client.invitelink2)],
-            [InlineKeyboardButton(text="• ᴛʀʏ ᴀɢᴀɪɴ •", url=retry_url)]
+            [
+                InlineKeyboardButton(
+                    "Join Channel 👆",
+                    url=client.invitelink)
+            ]
         ]
-    elif is_member_channel_2.status in ["member", "administrator", "creator"]:
-        buttons = [
-            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 1", url=client.invitelink)],
-            [InlineKeyboardButton(text="• ᴛʀʏ ᴀɢᴀɪɴ •", url=retry_url)]
-        ]
+    try:
+        buttons.append(
+            [
+                InlineKeyboardButton(
+                    text='Try Again 🥺',
+                    url=f"https://t.me/{client.username}?start={message.command[1]}"
+                )
+            ]
+        )
+    except IndexError:
+        pass
 
     await message.reply_photo(
         photo=FORCE_PIC,
