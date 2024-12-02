@@ -137,9 +137,6 @@ async def not_joined(client: Client, message: Message):
             "Please join the required channels before using the bot.",
             reply_markup=InlineKeyboardMarkup(buttons)
         )
-    else:
-        # Proceed with your bot's normal behavior if the user is a member of both channels
-        await message.reply_text("Welcome to the bot!")
 
     await message.reply_photo(
         photo=FORCE_PIC,
