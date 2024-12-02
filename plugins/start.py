@@ -113,7 +113,7 @@ async def not_joined(client: Client, message: Message):
 
     user_id = message.from_user.id
     is_member_channel_1 = await client.get_chat_member(-1002215102799, user_id)
-    is_member_channel_2 = await client.get_chat_member(-1002485124074, user_id)
+    is_member_channel_2 = await client.get_chat_member2(-1002485124074, user_id)
 
     if is_member_channel_1.status not in ["member", "administrator", "creator"] and is_member_channel_2.status not in ["member", "administrator", "creator"]:
         buttons = [
