@@ -128,6 +128,14 @@ async def not_joined(client: Client, message: Message):
                     url=client.invitelink)
             ]
         ]
+    elif FORCE_SUB_CHANNEL2:
+        buttons = [
+            [
+                InlineKeyboardButton(
+                    "Join Channel 👆",
+                    url=client.invitelink2)
+            ]
+        ]
     try:
         buttons.append(
             [
