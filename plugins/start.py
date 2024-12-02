@@ -125,9 +125,9 @@ async def not_joined(client: Client, message: Message):
 
     buttons = []
     
-    if not in_channel2:
-        buttons.append([InlineKeyboardButton("Join Channel 👆", url=f"https://t.me/{FORCE_SUB_CHANNEL}")])
     if not in_channel1:
+        buttons.append([InlineKeyboardButton("Join Channel 👆", url=f"https://t.me/{FORCE_SUB_CHANNEL}")])
+    if not in_channel2:
         buttons.append([InlineKeyboardButton("Join Channel 👆", url=f"https://t.me/{FORCE_SUB_CHANNEL2}")])
     
     if buttons:
