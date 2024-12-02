@@ -107,7 +107,7 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 # =====================================================================================##
 
 
-@@Bot.on_message(filters.command('start') & filters.private)
+@Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     if FORCE_SUB_CHANNEL & FORCE_SUB_CHANNEL2:
         buttons = [
