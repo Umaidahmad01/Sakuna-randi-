@@ -109,20 +109,7 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    # Replace 'channel1' and 'channel2' with your actual channel usernames
-    channel1 = "@Javpostr"
-    channel2 = "@Funfapbackup"
-
-    user_id = message.from_user.id
-    try:
-        is_member_channel1 = await client.get_chat_member(chat_id=channel1, user_id=user_id)
-        is_member_channel2 = await client.get_chat_member(chat_id=channel2, user_id=user_id)
-        
-        member_channel1 = is_member_channel1.status in ['member', 'administrator', 'creator']
-        member_channel2 = is_member_channel2.status in ['member', 'administrator', 'creator']
-    except:
-        member_channel1 = member_channel2 = False
-
+    
     buttons = []
     
     if member_channel1 and not member_channel2:
