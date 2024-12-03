@@ -107,14 +107,36 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 
     
     
+
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    buttons = [
-        [
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
+
+    # import sub as subscribed
+    sub1 = "subscribed1"
+    sub2 = "subscribed2"
+
+    buttons = []
+
+    if sub1 and not sub2:
+        buttons = [
+            [
+                InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
+            ],
         ]
-    ]
+    elif sub2 and not sub1:
+        buttons = [
+            [
+                InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink),
+            ],
+        ]
+    elif not sub1 and not sub2:
+        buttons = [
+            [
+                InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
+                InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
+            ],
+        ]
+
     try:
         buttons.append(
             [
