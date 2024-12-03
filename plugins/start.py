@@ -112,28 +112,28 @@ async def not_joined(client: Client, message: Message):
     # import sub as subscribed
     sub1 = "subscribed1"
     sub2 = "subscribed2"
-    
+
     buttons = []
-    
+
     if sub1 and not sub2:
-        buttons = [
+        buttons.append(
             [
                 InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
-            ],
-        ]
+            ]
+        )
     elif sub2 and not sub1:
-        buttons = [
+        buttons.append(
             [
                 InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink),
-            ],
-        ]
+            ]
+        )
     elif not sub1 and not sub2:
-        buttons = [
+        buttons.append(
             [
                 InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
                 InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
-            ],
-        ]
+            ]
+        )
 
     try:
         buttons.append(
