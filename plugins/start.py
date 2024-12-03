@@ -8,7 +8,6 @@ from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 from bot import Bot
 from config import *
 from helper_func import *
-from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
@@ -109,22 +108,26 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
+
+   # import sub as subscribed
+    sub1 = 
+    sub2 = 
     
     buttons = []
     
-    if member_channel1 and not member_channel2:
+    if sub1 and not sub2:
         buttons = [
             [
                 InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
             ],
         ]
-    elif member_channel2 and not member_channel1:
+    elif sub2 and not sub1:
         buttons = [
             [
                 InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink),
             ],
         ]
-    elif not member_channel1 and not member_channel2:
+    elif not sub1 and not sub2:
         buttons = [
             [
                 InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
