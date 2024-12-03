@@ -107,32 +107,7 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 # =====================================================================================##
 
 
-FORCE_SUB_CHANNEL = '@Funfapbackup'  # replace with your channel1 username
-FORCE_SUB_CHANNEL2 = '@Javpostr'  # replace with your channel2 username
 
-async def is_member(client, user_id, channel):
-    try:
-        member = await client.get_chat_member(channel, user_id)
-        return member.status in ['member', 'administrator', 'creator']
-    except:
-        return False
-
-@Bot.on_message(filters.command('start') & filters.private)
-async def not_joined(client: Client, message: Message):
-    user_id = message.from_user.id
-    in_channel1 = await is_member(client, user_id, FORCE_SUB_CHANNEL)
-    in_channel2 = await is_member(client, user_id, FORCE_SUB_CHANNEL2)
-
-    buttons = []
-    
-    if not in_channel1:
-        buttons.append([InlineKeyboardButton("Join Channel 👆", url=f"https://t.me/{FORCE_SUB_CHANNEL}")])
-    if not in_channel2:
-        buttons.append([InlineKeyboardButton("Join Channel 👆", url=f"https://t.me/{FORCE_SUB_CHANNEL2}")])
-    
-    if buttons:
-        buttons.append([InlineKeyboardButton(text='Try Again 🥺', url=f"https://t.me/{client.username}?start={message.command[1]}")])
-        
     await message.reply_photo(
         photo=FORCE_PIC,
         caption=FORCE_MSG.format(
