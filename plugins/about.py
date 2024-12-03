@@ -111,9 +111,11 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
 
-    # import sub as subscribed
-    sub1 = "subscribed1"
-    sub2 = "subscribed2"
+    user_id = message.from_user.id
+
+    # Check subscription status
+    sub1 = await is_subscribed1(None, client, message)
+    sub2 = await is_subscribed2(None, client, message)
 
     buttons = []
 
