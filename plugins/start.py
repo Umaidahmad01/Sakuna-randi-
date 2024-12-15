@@ -84,19 +84,21 @@ async def start_command(client: Client, message: Message):
              InlineKeyboardButton("ᴀʙᴏᴜᴛ", callback_data='about')]
         ])
         await message.reply_photo(
-            photo = START_PIC,
-            caption = START_MSG.format(
-                first = message.from_user.first_name,
-                last = message.from_user.last_name,
-                username = None if not message.from_user.username else '@' + message.from_user.username,
-                mention = message.from_user.mention,
-                id = message.from_user.id
+            photo=START_PIC,
+            caption=START_MSG.format(
+                first=message.from_user.first_name,
+                last=message.from_user.last_name,
+                username=None if not message.from_user.username else '@' + message.from_user.username,
+                mention=message.from_user.mention,
+                id=message.from_user.id
             ),
-            reply_markup = reply_markup,
-                message_effect_id=5104841245755180586 #🔥
+            reply_markup=reply_markup,
+            message_effect_id=5104841245755180586  # 🔥
         )
-        try: await message.delete()
-        except: pass
+        try:
+            await message.delete()
+        except:
+            pass
 
 
 # =====================================================================================##
@@ -110,96 +112,84 @@ REPLY_ERROR = "<code>Use this command as a reply to any telegram message without
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-
     user_id = message.from_user.id
 
     # Check subscription status
     sub1 = await is_subscribed1(None, client, message)
     sub2 = await is_subscribed2(None, client, message)
     sub3 = await is_subscribed3(None, client, message)
-    
 
     buttons = []
 
-if sub1 and not sub2 and not sub3:
-    buttons.append(
-        [
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
-        ]
-    )
-elif sub2 and not sub1 and not sub3:
-    buttons.append(
-        [
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink),
-        ]
-    )
-elif sub3 and not sub1 and not sub2:
-    buttons.append(
-        [
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink3),
-        ]
-    )
-elif not sub1 and not sub2 and not sub3:
-    buttons.append(
-        [
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink3),
-        ]
-    )
-elif sub1 and sub2 and not sub3:
-    buttons.append(
-        [
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink3),
-        ]
-    )
-elif sub1 and sub3 and not sub2:
-    buttons.append(
-        [
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink),
-        ]
-    )
-elif sub2 and sub3 and not sub1:
-    buttons.append(
-        [
-            InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
-        ]
-    )
-elif sub1 and sub2 and sub3:
-    # All subscriptions are satisfied; no need to add buttons for joining.
-    pass
+    if sub1 and not sub2 and not sub3:
+        buttons.append(
+            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2)]
+        )
+    elif sub2 and not sub1 and not sub3:
+        buttons.append(
+            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink)]
+        )
+    elif sub3 and not sub1 and not sub2:
+        buttons.append(
+            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink3)]
+        )
+    elif not sub1 and not sub2 and not sub3:
+        buttons.append(
+            [
+                InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
+                InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2),
+                InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink3),
+            ]
+        )
+    elif sub1 and sub2 and not sub3:
+        buttons.append(
+            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink3)]
+        )
+    elif sub1 and sub3 and not sub2:
+        buttons.append(
+            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink)]
+        )
+    elif sub2 and sub3 and not sub1:
+        buttons.append(
+            [InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2)]
+        )
+    elif sub1 and sub2 and sub3:
+        # All subscriptions are satisfied; no need to add buttons for joining.
+        pass
 
-try:
-    buttons.append(
-        [
-            InlineKeyboardButton(
-                text='• ᴛʀʏ ᴀɢᴀɪɴ •',
-                url=f"https://t.me/{client.username}?start={message.command[1]}"
-            )
-        ]
-    )
-except IndexError:
-    pass
+    try:
+        buttons.append(
+            [
+                InlineKeyboardButton(
+                    text='• ᴛʀʏ ᴀɢᴀɪɴ •',
+                    url=f"https://t.me/{client.username}?start={message.command[1]}"
+                )
+            ]
+        )
+    except IndexError:
+        pass
 
     await message.reply(
-    text=FORCE_MSG.format(
-        first=message.from_user.first_name,
-        last=message.from_user.last_name,
-        username=None if not message.from_user.username else '@' + message.from_user.username,
-        mention=message.from_user.mention,
-        id=message.from_user.id
-    ),
-    reply_markup=InlineKeyboardMarkup(buttons),
-    quote=True,
-    disable_web_page_preview=True,
-    message_effect_id=5104841245755180586  # Add the effect ID here
-)
+        text=FORCE_MSG.format(
+            first=message.from_user.first_name,
+            last=message.from_user.last_name,
+            username=None if not message.from_user.username else '@' + message.from_user.username,
+            mention=message.from_user.mention,
+            id=message.from_user.id
+        ),
+        reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True,
+        disable_web_page_preview=True,
+        message_effect_id=5104841245755180586  # Add the effect ID here
+    )
+
 
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
     users = await full_userbase()
     await msg.edit(f"{len(users)} users are using this bot")
+
 
 @Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
 async def send_text(client: Bot, message: Message):
@@ -246,4 +236,3 @@ Unsuccessful: <code>{unsuccessful}</code></b>"""
         msg = await message.reply(REPLY_ERROR)
         await asyncio.sleep(8)
         await msg.delete()
-
