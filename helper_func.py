@@ -141,3 +141,4 @@ def get_readable_time(seconds: int) -> str:
 
 subscribed1 = filters.create(is_subscribed1)
 subscribed2 = filters.create(is_subscribed2)
+subscribed3 = filters.create(is_subscribed3)
