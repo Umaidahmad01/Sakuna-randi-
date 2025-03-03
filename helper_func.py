@@ -138,6 +138,14 @@ def get_readable_time(seconds: int) -> str:
     up_time += ":".join(time_list)
     return up_time
 
+def get_exp_time(seconds):
+    periods = [('days', 86400), ('hours', 3600), ('mins', 60), ('secs', 1)]
+    result = ''
+    for period_name, period_seconds in periods:
+        if seconds >= period_seconds:
+            period_value, seconds = divmod(seconds, period_seconds)
+            result += f'{int(period_value)} {period_name}'
+    return result
 
 subscribed1 = filters.create(is_subscribed1)
 subscribed2 = filters.create(is_subscribed2)
