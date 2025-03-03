@@ -1,4 +1,4 @@
-import os
+import os, time
 import asyncio
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
@@ -9,6 +9,8 @@ from bot import Bot
 from config import *
 from helper_func import *
 from database.database import add_user, del_user, full_userbase, present_user
+
+FILE_AUTO_DELETE = TIME
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed1 & subscribed2 & subscribed3)
 async def start_command(client: Client, message: Message):
