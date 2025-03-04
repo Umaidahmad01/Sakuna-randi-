@@ -10,15 +10,11 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     if data == "about":
         await query.message.edit_text(
-            text=(
-                f"<b>○ Creator : <a href='tg://user?id={OWNER_ID}'>Rohit</a>\n"
-                f"○ Language : <code>Python3</code>\n"
-                f"○ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio {__version__}</a>"
-            ),
+            text=("<b>» ᴏᴡɴᴇʀ: <a href=http://t.me/Kakashi_The_Star>𝚜ᴏʙᴜᴢ</a>\n» 𝙵ᴏᴜɴᴅᴇʀ : <a href=http://t.me/Shimla_ki_Mirch>xᴀ-ʟɪɴ</a>\n» ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ : <a href=https://t.me/backupanimepoint>ᴠᴏʀᴛᴇ𝚡 𝙽ᴇᴛᴡᴏʀᴋ</a>\n» ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ : <a href=https://t.me/+oM4CJ2tdJ3o3Y2Jl>ᴀɴɪᴍᴇ ᴠᴏʀᴛᴇ𝚡 </a>\n» ᴏɴɢᴏɪɴɢ ᴄʜᴀɴɴᴇʟ : <a href=https://t.me/RyumaOngoingAnime>ᴏɴɢᴏɪɴɢ ᴠᴏʀᴛᴇ𝚡 </a>\n» ᴠᴏʀᴛᴇ𝚡 𝙽ᴇᴡ𝚜 : <a href=https://t.me/+In6rvaacWcA4NDc1>ᴠᴏʀᴛᴇ𝚡 𝙽ᴇᴡ𝚜</a>\n» ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href=https://t.me/i_killed_my_clan>ᴏʙɪᴛᴏ</a></b>"),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("🔒 Close", callback_data="close")]
+                    [InlineKeyboardButton("ᴄʟᴏsᴇ", callback_data="close")]
                 ]
             )
         )
