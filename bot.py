@@ -88,7 +88,7 @@ class Bot(Client):
             sys.exit()
 
         self.set_parse_mode(ParseMode.HTML)
-        self.LOGGER(__name__).info(f"Bot made by @rohit_1888!")
+        self.LOGGER(__name__).info(f"Bot made by @i_killed_my_clan!")
         usr_bot_me = await self.get_me()
         self.username = usr_bot_me.username
 
@@ -100,7 +100,7 @@ class Bot(Client):
 
     async def stop(self, *args):
         await super().stop()
-        self.LOGGER(__name__).info("Bot stopped. Contact @rohit_1888")
+        self.LOGGER(__name__).info("Bot stopped. Contact @i_killed_my_clan")
 
 if __name__ == "__main__":
     bot = Bot()
