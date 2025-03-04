@@ -40,6 +40,7 @@ FORCE_SUB_CHANNEL3 = int(os.environ.get("FORCESUB_CHANNEL3", "-1002180207210"))
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
+HELP_TXT = "<b>ᴅᴍ <a href=https://t.me/i_killed_my_clan>ᴏʙɪᴛᴏ</a></b>"
 ABOUT_TXT = "<b>» ᴏᴡɴᴇʀ: <a href=http://t.me/Kakashi_The_Star>𝚜ᴏʙᴜᴢ</a>\n» 𝙵ᴏᴜɴᴅᴇʀ : <a href=http://t.me/Shimla_ki_Mirch>xᴀ-ʟɪɴ</a>\n» ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ : <a href=https://t.me/backupanimepoint>ᴠᴏʀᴛᴇ𝚡 𝙽ᴇᴛᴡᴏʀᴋ</a>\n» ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ : <a href=https://t.me/+oM4CJ2tdJ3o3Y2Jl>ᴀɴɪᴍᴇ ᴠᴏʀᴛᴇ𝚡 </a>\n» ᴏɴɢᴏɪɴɢ ᴄʜᴀɴɴᴇʟ : <a href=https://t.me/RyumaOngoingAnime>ᴏɴɢᴏɪɴɢ ᴠᴏʀᴛᴇ𝚡 </a>\n» ᴠᴏʀᴛᴇ𝚡 𝙽ᴇᴡ𝚜 : <a href=https://t.me/+In6rvaacWcA4NDc1>ᴠᴏʀᴛᴇ𝚡 𝙽ᴇᴡ𝚜</a>\n» ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href=https://t.me/i_killed_my_clan>ᴏʙɪᴛᴏ</a></b>"
 START_PIC = os.environ.get("START_PIC", "https://envs.sh/7nm.jpg")
 FORCE_PIC = os.environ.get("FORCE_PIC", "https://envs.sh/Pt_.jpg")
