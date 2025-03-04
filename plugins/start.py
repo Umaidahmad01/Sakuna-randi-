@@ -115,7 +115,8 @@ async def start_command(client: Client, message: Message):
         reply_markup=InlineKeyboardMarkup([
                     [InlineKeyboardButton("• ғᴏʀ ᴍᴏʀᴇ •", url='https://t.me/RyumaHindiSubAnime')],
                     [InlineKeyboardButton("• ᴀʙᴏᴜᴛ", callback_data='about'),
-                     InlineKeyboardButton("ᴏɴɢᴏɪɴɢ •", url='https://t.me/RyumaOngoingAnime'])
+                     InlineKeyboardButton("ᴏɴɢᴏɪɴɢ •", url='https://t.me/RyumaOngoingAnime']
+           ])
         await message.reply_photo(
             photo=START_PIC,
             caption=START_MSG.format(
