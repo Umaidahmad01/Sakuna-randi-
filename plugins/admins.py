@@ -5,7 +5,7 @@ from bot import Bot
 from config import OWNER_ID
 from database.database import present_admin, add_admin, full_adminbase, del_admin
 
-@Bot.on_message(filters.command("make_admin"))
+@Bot.on_message(filters.command("add_admin"))
 async def add_admin_command(client: Bot, message: Message):
     user_id = message.from_user.id
     if user_id != OWNER_ID:
@@ -13,7 +13,7 @@ async def add_admin_command(client: Bot, message: Message):
         return
 
     if len(message.command) != 2:
-        await message.reply_text("<b>You're using the wrong format. Please use it like this:</b> /make_admin {user_id}")
+        await message.reply_text("<b>You're using the wrong format. Please use it like this:</b> /add_admin {user_id}")
         return
 
     try:
@@ -36,7 +36,7 @@ async def add_admin_command(client: Bot, message: Message):
         await message.reply_text(f"<b>{first_name} - {admin_id_add} is now an admin.</b>")
 
 
-@Bot.on_message(filters.command('rm_admin'))
+@Bot.on_message(filters.command('del_admin'))
 async def remove_admin_command(client: Bot, message: Message):
     user_id = message.from_user.id
     if user_id != OWNER_ID:
@@ -44,7 +44,7 @@ async def remove_admin_command(client: Bot, message: Message):
         return
 
     if len(message.command) != 2:
-        await message.reply_text("<b>You're using the wrong format. Please use it like this:</b> /rm_admin {user_id}")
+        await message.reply_text("<b>You're using the wrong format. Please use it like this:</b> /del_admin {user_id}")
         return
 
     try:
@@ -67,7 +67,7 @@ async def remove_admin_command(client: Bot, message: Message):
         await message.reply_text(f"<b>{first_name} - {admin_id_remove} has been removed from the admin list.</b>")
 
 
-@Bot.on_message(filters.command('admins_list'))
+@Bot.on_message(filters.command('admins'))
 async def admin_list_command(client: Bot, message: Message):
     user_id = message.from_user.id
     is_user_admin = await present_admin(user_id)
